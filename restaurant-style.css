@@ -109,20 +109,17 @@ body {
   width: 93%;
   border-radius: 15.0431px;
   box-shadow: 0px 4.01149px 15.0431px rgba(0, 0, 0, 0.1);
-  position: relative;
   cursor: pointer;
+  overflow: hidden;
 }
-.main-section .menu .meals:hover > .check {
-  transform: scaleX(1);
-}
-.main-section .menu .meals:hover > .price {
-  transform: translateX(-50px);
-}
-.main-section .menu .meals:hover > .card-txt {
-  width: 70%;
+.main-section .menu .meals:hover > .check-price {
+  transform: translateX(-59px);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.main-section .menu .meals .card-text:hover {
+  width: 70%;
 }
 .main-section .menu .meals h3 {
   width: 100%;
@@ -135,36 +132,35 @@ body {
   width: 90%;
   font-size: 15px;
   font-weight: 300;
-  padding: 2.5px 0 15px 10px;
+  padding: 2.5px 0 0px 10px;
   line-height: 18px;
+}
+.main-section .menu .meals .check-price {
+  position: relative;
+  transform-origin: right 100%;
+  transform: translateX(0);
+  transition: transform 400ms ease-in-out;
 }
 .main-section .menu .meals .price {
   width: 18px;
   padding: 0;
   font-weight: 700;
-  position: absolute;
-  right: 0;
-  left: 90%;
-  top: 40px;
-  bottom: 0;
-  transform: translateX(0);
-  transition: transform 400ms ease-in-out;
+  position: relative;
+  left: 85%;
+  bottom: 17px;
 }
 .main-section .menu .meals .check {
   position: absolute;
   right: 0;
-  top: 0;
   bottom: 0;
   background-color: #99E2D0;
-  width: 15.7%;
-  height: 100%;
+  width: 59px;
+  height: 79px;
   border-radius: 0 15px 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-origin: right 100%;
-  transform: scaleX(0);
-  transition: transform 330ms ease-in-out;
+  margin-right: -59px;
 }
 .main-section .menu .meals .check .fa-circle-check {
   color: white;

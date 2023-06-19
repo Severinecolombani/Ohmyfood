@@ -219,6 +219,7 @@ h1 {
 .restaurant-section .love {
   font-size: 22px;
   position: absolute;
+  color: red;
   width: 100%;
   height: 100%;
   top: 0;
@@ -227,9 +228,7 @@ h1 {
   left: 0;
   opacity: 0;
 }
-.restaurant-section .love:active::after {
-  content: "";
-  color: red;
+.restaurant-section .love:hover {
   opacity: 1;
 }
 .restaurant-section .fa-heart {
