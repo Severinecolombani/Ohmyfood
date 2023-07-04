@@ -244,7 +244,6 @@ h1 {
     .love {
         font-size: 22px;
         position: absolute;
-        color: red;
         width: 100%;
         height: 100%;
         top: 0;
@@ -252,6 +251,13 @@ h1 {
         right: 0;
         left: 0;
         opacity: 0; 
+
+        &::before {
+            background: $button-bg-color;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: initial;
+        }
          
         &:hover {
             opacity: 1;
@@ -276,6 +282,12 @@ footer {
     flex-direction: column;
     padding-bottom: 30px;
 
+    .foot-1 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
     h2 {
         font-family: 'Shrikhand', cursive;
         color: $secondary-font-color;
@@ -294,6 +306,50 @@ footer {
 
     .footer-link {
         font-weight: 400;
+    }
+}
+
+/* LOADER */
+
+.loader-section {
+    width: 100%;
+    height: 800px;
+    line-height: 800px;
+    position: absolute;
+    z-index: 3;
+    background-color: $fifth-bg-color;
+    animation: loader-end 1s linear 2s;
+    animation-fill-mode: forwards;
+    .loader {
+        text-align: center;
+        color: $secondary-font-color;
+        font-family: 'Shrikhand', cursive;
+        font-size: 40px;
+        animation: loader 3s ease-in-out;
+}
+}
+
+@keyframes loader-end {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
     }
 }
 
@@ -365,6 +421,7 @@ footer {
             flex-direction: row;
 
             .foot-1 {
+                flex-direction: row;
                 margin: 0 20px 0 20px;
             }
         }

@@ -1,5 +1,19 @@
 @import "./base/variables";
 
+@keyframes slideMenu {
+    from {
+        transform: translateX(-300px);
+        transform-origin: left 100%;
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        transform-origin: left 100%;
+        opacity: 1;
+
+    }
+}
+
 * {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
@@ -68,7 +82,7 @@ body {
         padding-top: 30px;
         padding-left: 2.7%;
     }
-
+    
     .like {
         border: none;
         background-color: none;
@@ -89,9 +103,15 @@ body {
         }
 
         .love {
-            color: red;
-            opacity: 0;
+            opacity: 0; 
 
+            &::before {
+                background: $button-bg-color;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: initial;
+            }
+             
             &:hover {
                 opacity: 1;
             }
@@ -110,6 +130,10 @@ body {
         
     }
 
+    .menus {
+        overflow: hidden;
+    }
+
     .menu {
 
         width: 100%;
@@ -118,26 +142,47 @@ body {
         align-items: center;
         gap: 10px;
         margin: 10px 0 30px 0;
+        opacity: 0;
 
+        &__1 {
+            animation: slideMenu 1000ms;
+            animation-fill-mode: forwards;
+        }
+
+        &__2 {
+            animation: slideMenu 1000ms 1000ms;
+            animation-fill-mode: forwards;
+        }
+
+        &__3 {
+            animation: slideMenu 1000ms 2000ms;
+            animation-fill-mode: forwards;
+        }
         .meals {
-            width: 100%;
+            display: flex;
+            flex-direction: row;
             background-color: $primary-bg-color;
             width: 93%;
             border-radius: 15.0431px;
             box-shadow: 0px 4.01149px 15.0431px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             overflow: hidden;
+            
+            &:hover > .check {
+                margin-right: 0;
+                transition: margin-right 400ms ease-in-out;
+            }
 
-            &:hover > .check-price {
-                transform: translateX(-59px);
+            &:hover > .card-txt {
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
             }
 
-            .card-text:hover {
-                width: 70%;
-                
+            .card-txt {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
             }
             
             h3 {
@@ -149,41 +194,30 @@ body {
             }
 
             p {
-                width: 90%;
+                width: 100%;
                 font-size: 15px;
                 font-weight: 300;
                 padding: 2.5px 0 0px 10px;
-                line-height: 18px;
             }
-
-            .check-price {
-                position: relative;
-                transform-origin: right 100%;
-                transform: translateX(0);
-                transition: transform 400ms ease-in-out;
-            }
-
+            
             .price {
-                width: 18px;
-                padding: 0;
+                width: 20px;
                 font-weight: 700;
-                position: relative;
-                left: 85%;
-                bottom: 17px;
+                padding: 40px 35px 0 0;
+                margin-left: 10px;
+                margin-right: 10px;
             }
 
             .check {
-                position: absolute;
-                right: 0;
-                bottom: 0;
                 background-color: $thirdly-bg-color;
-                width: 59px;
+                width: 70px;
                 height: 79px;
                 border-radius: 0 15px 15px 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-right: -59px;
+                margin-right: -70px;
+                
 
                 .fa-circle-check {
                     color: $secondary-font-color;
@@ -228,6 +262,12 @@ footer {
     flex-direction: column;
     padding-bottom: 30px;
 
+    .foot-1 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
     h2 {
         font-family: 'Shrikhand', cursive;
         color: $secondary-font-color;
@@ -246,5 +286,76 @@ footer {
 
     .footer-link {
         font-weight: 400;
+    }
+}
+
+
+@media screen and (min-width: 1023px) {
+
+    header {
+        .fa-arrow-left {
+            left: 2%;
+        }
+    }
+    .logo {
+        img {
+            width: 20%;
+        }
+    }
+
+    body {
+        background-color: $primary-bg-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo-restaurant {
+        margin-top: -300px;
+        
+    }
+
+    .main-section {
+        width: 73%;
+    
+        padding-bottom: 60px;
+        padding-top: 50px;
+        margin-bottom: -50px;
+
+        .menus {
+            h2 {
+            width: 40px;
+            margin-left: 20%;
+            }
+        }
+
+        .menu {
+
+            .meals {
+                width: 60%;
+            }
+        }
+        
+    }
+
+    footer {
+
+        flex-direction: row-reverse;
+
+
+        h2 {
+            padding: 50px 20px 0px 10px;
+        }
+
+        .foot {
+            padding: 53px 20px 0 10px;
+            display: flex;
+            flex-direction: row;
+
+            .foot-1 {
+                flex-direction: row;
+                margin: 0 20px 0 20px;
+            }
+        }
     }
 }
